@@ -75,6 +75,9 @@ incident_priority_service_git_branch=master
 
 disaster_simulator_service_git_repo=https://github.com/Emergency-Response-Demo/disaster-simulator.git
 disaster_simulator_service_git_branch=master
+<<<<<<< HEAD
 
 responder_client_app_git_repo=https://github.com/Emergency-Response-Demo/mobile-app.git
 responder_client_app_git_branch=master
+=======
+>>>>>>> eb9a44f... https://github.com/Emergency-Response-Demo/install/issues/50
