@@ -1,0 +1,22 @@
+---
+
+
+application_name: "{{ evacuee_dialogue_application_name }}"
+cm_name: evacuee-dialogue
+application_properties: application.properties
+application_properties_resource: "{{ resources_dir }}/{{ application_properties }}"
+
+application_image: redhat-openjdk18-openshift:1.7
+application_image_namespace: openshift
+
+buildconfig_name: "{{ application_name }}-binary"
+buildconfig_template: evacuee-dialogue-binary-buildconfig.yml
+
+pipeline_buildconfig_name: "{{ application_name }}-pipeline"
+pipeline_buildconfig_template: evacuee-dialogue-pipeline.yml
+
+source_imagestream_name: "{{ application_name }}"
+source_imagestream_template: evacuee-dialogue-source-imagestream.yml
+
+binary_imagestream_template: evacuee-dialogue-imagestream.yml
+application_template: evacuee-dialogue-service.yml

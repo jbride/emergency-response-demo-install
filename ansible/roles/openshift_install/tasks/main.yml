@@ -1,5 +1,6 @@
 ---
 
+
 - name: install sso
   import_role:
     name: sso
@@ -231,6 +232,15 @@
     resources_dir: "{{ resources_base_dir }}/datawarehouse"
     work_dir_name: datawarehouse
 
+- name: install openshift evacuee dialogue
+  import_role:
+    name: openshift_evacuee_dialogue
+  vars:
+    namespace: "{{ namespace_services }}"
+    resources_dir: "{{ resources_base_dir }}/evacuee-dialogue"
+    work_dir_name: evacuee-dialogue
+  when: twilio_account_sid is defined or twilio_account_sid is not none or twilio_account_sid|trim() != ""
+
 - block:
   - name: start pipeline incident service
     shell: "{{ openshift_cli }} start-build {{ incident_service_application_name }}-pipeline -n {{ namespace_tools }}"
@@ -300,5 +310,8 @@
 
   - name: start pipeline datawarehouse service
     shell: "{{ openshift_cli }} start-build {{ dw_application_name }}-pipeline -n {{ namespace_tools }}"
+
+  - name: start pipeline evacuee dialogue service
+    shell: "{{ openshift_cli }} start-build {{ evacuee_dialogue_application_name }}-pipeline -n {{ namespace_tools }}"
 
   when: deploy_from is defined and deploy_from == "source"

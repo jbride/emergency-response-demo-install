@@ -2,6 +2,12 @@
 # MapBox API token, see https://docs.mapbox.com/help/how-mapbox-works/access-tokens/
 map_token=replaceme
 
+# Optional: evacuee dialogue functionality; leave blank if not going to use
+twilio_account_sid=AC83ae9d8f6e41edbd45faaa388dfd0295
+twilio_auth_token=604c8b5f0f3a935d0adb8abb54d8bf4e
+twilio_from_phone_number="+17742527773"
+twilio_test_to_phone_number="+13035237885"
+
 # valid choices: image, source
 deploy_from=image
 
@@ -54,6 +60,9 @@ disaster_service_image_tag=2.4
 datawarehouse_service_image=quay.io/emergencyresponsedemo/datawarehouse
 datawarehouse_service_image_tag=2.4
 
+evacuee_dialogue_service_image=quay.io/emergencyresponsedemo/evacuee-dialogue-service
+evacuee_dialogue_service_image_tag=2.4
+
 # source repos
 incident_service_git_repo=https://github.com/Emergency-Response-Demo/incident-service.git
 incident_service_git_branch=master
@@ -97,5 +106,5 @@ responder_client_app_git_branch=master
 disaster_service_git_repo=https://github.com/Emergency-Response-Demo/disaster-service.git
 disaster_service_git_branch=master
 
-datawarehouse_service_git_repo=https://github.com/Emergency-Response-Demo/datawarehouse.git
-datawarehouse_service_git_branch=master
+evacuee_dialogue_service_git_repo=https://github.com/Emergency-Response-Demo/evacuee-dialogue.git
+evacuee_dialogue_service_git_branch=master

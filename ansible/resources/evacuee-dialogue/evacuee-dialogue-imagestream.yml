@@ -1,0 +1,10 @@
+---
+  
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: {{ evacuee_dialogue_application_name }}
+  labels:
+    app: {{ evacuee_dialogue_application_name }}
+spec:
+  dockerImageRepository: {{ evacuee_dialogue_service_image }}

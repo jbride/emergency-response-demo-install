@@ -1,0 +1,30 @@
+---
+
+- name: Deploy Evacuee Dialogue
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  run_once: true
+  vars_files:
+    - group_vars/services.yml
+    - group_vars/tools.yml
+
+  tasks:
+    - set_fact:
+        namespace: "{{ namespace_services }}"
+        resources_dir: "{{ resources_base_dir }}/evacuee-dialogue"
+        work_dir_name: evacuee-dialogue
+    - include_role:
+        name: ../roles/openshift_evacuee_dialogue
+      when: >
+        ACTION is not defined or
+        ACTION is none or
+        ACTION|trim() == "" or
+        ACTION|trim() == "install" and
+        twilio_account_sid is defined or twilio_account_sid is not none or twilio_account_sid|trim() != ""
+    - include_role:
+        name: ../roles/openshift_evacuee_dialogue
+        tasks_from: uninstall
+      when: >
+        ACTION is defined and
+        ACTION|trim() == "uninstall"
