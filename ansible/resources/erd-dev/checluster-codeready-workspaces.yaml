@@ -1,0 +1,38 @@
+﻿apiVersion: org.eclipse.che/v1
+kind: CheCluster
+metadata:
+  name: codeready-workspaces
+  labels:
+    app: crw
+spec:
+  auth:
+    identityProviderURL: 'https://sso-rhsso-sso1.apps.ratwater.xyz'
+    identityProviderRealm: crwRealm
+    identityProviderPassword: admin1234
+    identityProviderClientId: codeready-public
+    identityProviderAdminUserName: admin
+    externalIdentityProvider: true
+    openShiftoAuth: false
+  database:
+    chePostgresDb: dbche
+    chePostgresHostName: postgres
+    chePostgresPort: '5432'
+    chePostgresSecret: che-postgres-secret
+    externalDb: false
+  k8s: {}
+  metrics:
+    enable: false
+  server:
+    cheLogLevel: INFO
+    externalDevfileRegistry: false
+    selfSignedCert: false
+    cheDebug: 'false'
+    tlsSupport: true
+    allowUserDefinedWorkspaceNamespaces: false
+    externalPluginRegistry: false
+    gitSelfSignedCert: false
+    cheFlavor: codeready
+  storage:
+    preCreateSubPaths: true
+    pvcClaimSize: 1Gi
+    pvcStrategy: per-workspace
