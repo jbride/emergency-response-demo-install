@@ -59,6 +59,8 @@ items:
               value: {{ nexus_mirror }}
             - name: JAVA_OPTIONS
               value: '-Dkie.maven.settings.custom=/m2/settings.xml'
+            - name: JAVA_OPTS_APPEND
+              value: "-Dorg.jbpm.event.emitters.elasticsearch.url=http://{{ elastic_host }}:9200/elasticsearch -Dorg.jbpm.event.emitters.elasticsearch.user={{ elastic_user }} -Dorg.jbpm.event.emitters.elasticsearch.password={{ elastic_pwd }}\"'
             imagePullPolicy: IfNotPresent
             name: {{ application_name }}
             ports:
